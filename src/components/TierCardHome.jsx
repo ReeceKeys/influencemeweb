@@ -44,20 +44,22 @@ export default function TierCardHome({ title, hovertitle, price, description, im
           {/* Desktop hover overlay */}
             <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col">
             {/* Title at top */}
-            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-4 text-center w-full underline underline-offset-8">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full">
                 {hovertitle}
             </h3>
 
             {/* Description in the middle */}
-            <div className="mx-auto w-4/5 text-left">
-                <p className="text-xs sm:text-sm md:text-base">
-                {descriptionLines.map((line, idx) => (
-                    <span key={idx}>
-                    {line}
-                    <br />
-                    </span>
-                ))}
-                </p>
+            <div className='border-t border-b border-white'>
+                <div className="mx-auto w-4/5 text-left  py-2">
+                    <p className="text-xs sm:text-sm md:text-base">
+                    {descriptionLines.map((line, idx) => (
+                        <span key={idx}>
+                        {line}
+                        <br />
+                        </span>
+                    ))}
+                    </p>
+                </div>
             </div>
 
             {/* Price at the bottom */}
@@ -75,19 +77,23 @@ export default function TierCardHome({ title, hovertitle, price, description, im
 
         {/* Mobile description */}
         <div className="md:hidden flex-1 p-2 text-white text-sm text-left mb-8">
-            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-4 text-left w-full underline underline-offset-8">
-                {hovertitle}
-            </h3>
-            <div className="mb-2">
-          {descriptionLines.map((line, idx) => (
+        <h3 className="text-sm sm:text-base md:text-lg font-bold mb-2 text-left w-full">
+            {hovertitle}
+        </h3>
+
+        {/* Lines with extra length on right */}
+        <div className="border-t border-b border-white py-2 mb-2 -mr-4">
+            {descriptionLines.map((line, idx) => (
             <span key={idx}>
-              {line}
-              <br />
+                {line}
+                <br />
             </span>
-          ))}
-          </div>
-            <h3>Starting Price: {price}</h3>
+            ))}
         </div>
+
+        <h3>Starting Price: {price}</h3>
+        </div>
+
       </div>
     </div>
   );
