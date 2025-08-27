@@ -1,11 +1,17 @@
-// src/components/Header.jsx
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation once on page load
+    const timeout = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
 
   // Mobile menu animation variants
   const menuVariants = {
@@ -14,7 +20,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow sticky top-0 z-50">
+    <motion.header
+      className="bg-white sticky top-0 z-50"
+      initial={{ opacity: 0, y: -20 }}
+      animate={loaded ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         
         {/* Logo */}
@@ -65,6 +76,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
