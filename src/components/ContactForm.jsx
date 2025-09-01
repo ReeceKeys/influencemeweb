@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactForm() {
   const [result, setResult] = useState("");
@@ -11,7 +11,7 @@ export default function ContactForm() {
 
     try {
       const formData = new FormData(event.target);
-      formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+      formData.append("access_key", "4e576d58-b55b-4be7-8a85-30ee31985eb1");
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -23,11 +23,14 @@ export default function ContactForm() {
       if (data.success) {
         setResult("Form Submitted Successfully!");
         event.target.reset();
+        setTimeout(() => setResult(""), 3000);
       } else {
         setResult(data.message || "Submission failed. Please try again.");
+        setTimeout(() => setResult(""), 4000);
       }
     } catch {
       setResult("An error occurred. Please try again.");
+      setTimeout(() => setResult(""), 4000);
     }
   };
 
@@ -45,8 +48,14 @@ export default function ContactForm() {
       transition={{ duration: 0.7 }}
       className="bg-white text-gray-800 rounded-lg shadow-lg w-full max-w-lg overflow-hidden"
     >
-      {/* Form content */}
-      <div className="p-6 flex flex-col gap-4">
+      {/* Smooth layout animation on the whole card */}
+      <motion.div
+        layout
+        transition={{
+          layout: { type: "spring", damping: 22, stiffness: 180 },
+        }}
+        className="p-6 flex flex-col gap-4"
+      >
         <form ref={formRef} onSubmit={onSubmit} className="flex flex-col gap-4">
           <input
             type="text"
@@ -70,7 +79,6 @@ export default function ContactForm() {
             className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
-          {/* Buttons */}
           <div className="flex gap-2">
             <button
               type="button"
@@ -88,17 +96,27 @@ export default function ContactForm() {
           </div>
         </form>
 
-        {result && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-center text-gray-800 font-medium mt-2"
-          >
-            {result}
-          </motion.p>
-        )}
-      </div>
+        {/* Animated success/error message */}
+        <AnimatePresence>
+          {result && (
+            <motion.div
+              key="result-message"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{
+                height: { duration: 0.5, ease: "easeInOut" },
+                opacity: { duration: 0.3, ease: "easeInOut" },
+              }}
+              className="overflow-hidden"
+            >
+              <p className="text-center text-gray-800 font-medium mt-2">
+                {result}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 }
