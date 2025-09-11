@@ -48,7 +48,6 @@ export default function ContactForm() {
       transition={{ duration: 0.7 }}
       className="bg-white text-gray-800 rounded-lg shadow-lg w-full max-w-lg overflow-hidden"
     >
-      {/* Smooth layout animation on the whole card */}
       <motion.div
         layout
         transition={{
@@ -56,29 +55,86 @@ export default function ContactForm() {
         }}
         className="p-6 flex flex-col gap-4"
       >
-        <form ref={formRef} onSubmit={onSubmit} className="flex flex-col gap-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            required
-            className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+        <form
+          ref={formRef}
+          onSubmit={onSubmit}
+          className="flex flex-col gap-4"
+        >
+          {/* Name + Email */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="name" className="block mb-1 text-gray-700 font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="e.g. John Doe"
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-1 text-gray-700 font-medium">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="e.g. john@example.com"
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+            </div>
+          </div>
 
+          {/* Phone + Industry */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="phone" className="block mb-1 text-gray-700 font-medium">
+                Phone <span className="italic text-gray-500">(Optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="e.g. +1 (555) 123-4567"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+            </div>
+            <div>
+              <label htmlFor="industry" className="block mb-1 text-gray-700 font-medium">
+                Your Industry
+              </label>
+              <input
+                type="text"
+                id="industry"
+                name="industry"
+                placeholder="e.g. Technology"
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+            </div>
+          </div>
+
+          {/* Message */}
+          <div>
+            <label htmlFor="message" className="block mb-1 text-gray-700 font-medium">
+              Additional Notes <span className="italic text-gray-500">(Optional)</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="e.g. I’d like to learn more about your services..."
+              rows={5}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y overflow-y-auto"
+              style={{ maxHeight: "calc(100vh - 200px)" }} // 👈 keeps bottom padding
+            />
+          </div>
+
+          {/* Buttons */}
           <div className="flex gap-2">
             <button
               type="button"
