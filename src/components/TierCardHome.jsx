@@ -42,31 +42,32 @@ export default function TierCardHome({ title, hovertitle, price, description, im
           ></div>
 
           {/* Desktop hover overlay */}
-            <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col">
-            {/* Title at top */}
-            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full">
-                {hovertitle}
-            </h3>
+<div className="hidden md:flex absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
+  {/* Title at top */}
+  <h3 className="text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full">
+    {hovertitle}
+  </h3>
 
-            {/* Description in the middle */}
-            <div className='border-t border-b border-white'>
-                <div className="mx-auto w-4/5 text-left  py-2">
-                    <p className="text-xs sm:text-sm md:text-base">
-                    {descriptionLines.map((line, idx) => (
-                        <span key={idx}>
-                        {line}
-                        <br />
-                        </span>
-                    ))}
-                    </p>
-                </div>
-            </div>
+  {/* Description in the middle */}
+  <div className='border-t border-b border-white'>
+    <div className="mx-auto w-4/5 text-left py-2">
+      <p className="text-xs sm:text-sm md:text-base">
+        {descriptionLines.map((line, idx) => (
+          <span key={idx}>
+            {line}
+            <br />
+          </span>
+        ))}
+      </p>
+    </div>
+  </div>
 
-            {/* Price at the bottom */}
-            <h3 className="mt-auto mb-8 text-center text-sm sm:text-base md:text-lg font-bold">
-                Starting Price: {price}
-            </h3>
-            </div>
+  {/* Price at the bottom */}
+  <h3 className="mt-auto mb-8 text-center text-sm sm:text-base md:text-lg font-bold">
+    Starting Price: {price}
+  </h3>
+</div>
+
 
 
           {/* Tier name at bottom */}
