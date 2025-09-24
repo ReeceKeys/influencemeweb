@@ -34,14 +34,14 @@ export default function TierCardHome({
         ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
       `}
     >
-      <div className="flex flex-row md:flex-col sm:justify-start items-start gap-4">
+      <div className="flex flex-row md:flex-col sm:justify-start items-start md:gap-4 gap-0 md:pb-0">
         {/* Image card */}
         <Link
           to={link}
-          className="relative group flex-none w-[250px] sm:w-[250px] md:w-[250px] lg:w-[250px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+          className="relative group flex-none w-[180px] sm:w-[200px] xs:w-[160px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
         >
           {/* Fixed width & height image container */}
-          <div className="w-full h-[250px] overflow-hidden rounded-t">
+          <div className="w-full h-[180px] sm:h-[200px] xs:h-[160px] overflow rounded-t">
             <img
               src={image}
               alt={title}
@@ -50,7 +50,7 @@ export default function TierCardHome({
           </div>
 
           {/* Desktop hover overlay */}
-          <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-95 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
+          <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
             <h3 className={`text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full ${fontHeader}`}>
               {hovertitle}
             </h3>

@@ -20,42 +20,43 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex-1 flex flex-col justify-center p-2 sm:p-8 md:p-8 bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white overflow-x-hidden">
+  <div className="flex-1 flex flex-col p-4 pb-12 sm:p-8 md:p-8 bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white overflow-y-auto">
 
-      {/* Header and description */}
-      <div className={`max-w-3xl mx-auto text-center px-4 transition-all duration-700 transform
-        ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
-      >
-        <h1 className="font-header text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-4 pb-4 mt-8">
-          Ready to grow your dream?
-        </h1>
+    {/* Header and description */}
+    <div className={`max-w-3xl mx-auto text-center px-4 pt-8 transition-all duration-700 transform
+      ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
+    >
+      <h1 className="font-header text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-4 pb-4 mt-8">
+        Ready to grow your dream?
+      </h1>
 
-        <p className="font-body text-sm md:text-lg text-indigo-100 font-medium mb-16 text-center">
-          Industry-specific assistance
-          <span className="inline md:hidden"><br /></span>
-          to build your brand.
-        </p>
-      </div>
-
-      {/* Horizontal flexbox for desktop */}
-      <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start gap-[4rem] transition-all duration-700 transform
-        ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-      >
-        {tiers.map((tier, idx) => (
-          <TierCardHome
-            key={tier.title}
-            index={idx}
-            title={tier.title}
-            hovertitle={tier.hovertitle}
-            description={tier.description}
-            price={tier.price}
-            image={tier.image}
-            link={tier.link}
-            fontHeader="font-header"  // ✅ Pass header font
-            fontBody="font-body"      // ✅ Pass body font
-          />
-        ))}
-      </div>
+      <p className="font-body text-sm md:text-lg text-indigo-100 font-medium mb-16 text-center">
+        Industry-specific assistance
+        <span className="inline md:hidden"><br /></span>
+        to build your brand.
+      </p>
     </div>
-  );
+
+    {/* Horizontal flexbox for desktop */}
+    <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start pt-8 gap-[6rem] transition-all duration-700 transform
+      ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+    >
+      {tiers.map((tier, idx) => (
+        <TierCardHome
+          key={tier.title}
+          index={idx}
+          title={tier.title}
+          hovertitle={tier.hovertitle}
+          description={tier.description}
+          price={tier.price}
+          image={tier.image}
+          link={tier.link}
+          fontHeader="font-header"
+          fontBody="font-body"
+        />
+      ))}
+    </div>
+  </div>
+);
+
 }
