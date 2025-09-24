@@ -46,13 +46,13 @@ export default function Header() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="text-2xl font-bold text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline"
+            className="font-header text-2xl font-bold text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline"
           >
             InfluenceMe
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="font-header hidden md:flex space-x-6">
             <Link to="/tier1" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 1</Link>
             <Link to="/tier2" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 2</Link>
             <Link to="/tier3" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 3</Link>

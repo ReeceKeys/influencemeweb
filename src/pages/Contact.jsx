@@ -10,11 +10,11 @@ export default function Contact() {
   }, []);
 
   return (
-    <div className="flex-1 flex-col bg-gradient-to-r from-blue-400 to-indigo-600 text-white">
+    <div className="flex-1 flex-col bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white">
 
       {/* Header */}
       <header
-        className={`text-center py-8 pb-12 transition-all duration-700 transform ${
+        className={`text-center py-12 mt-8 pb-12 transition-all duration-700 transform ${
           loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
         }`}
       >
@@ -22,7 +22,7 @@ export default function Contact() {
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex items-center justify-center px-4 sm:px-8 md:px-12">
+      <main className="flex-1 flex items-center justify-center px-4 sm:px-8 md:px-12 mb-16">
         <ContactForm />
       </main>
 

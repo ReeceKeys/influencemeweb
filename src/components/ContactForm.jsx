@@ -61,9 +61,9 @@ export default function ContactForm() {
           className="flex flex-col gap-4"
         >
           {/* Name + Email */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="font-body grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="name" className="block mb-1 text-gray-700 font-medium">
+              <label htmlFor="name" className="font-body block mb-1 text-gray-700 font-medium">
                 Name
               </label>
               <input
@@ -72,11 +72,11 @@ export default function ContactForm() {
                 name="name"
                 placeholder="e.g. John Doe"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block mb-1 text-gray-700 font-medium">
+              <label htmlFor="email" className="font-body block mb-1 text-gray-700 font-medium">
                 Email
               </label>
               <input
@@ -85,7 +85,7 @@ export default function ContactForm() {
                 name="email"
                 placeholder="e.g. john@example.com"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
           </div>
@@ -93,19 +93,19 @@ export default function ContactForm() {
           {/* Phone + Industry */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="phone" className="block mb-1 text-gray-700 font-medium">
-                Phone <span className="italic text-gray-500">(Optional)</span>
+              <label htmlFor="phone" className="font-body block mb-1 text-gray-700 font-medium">
+                Phone <span className="font-body italic text-gray-500">(Optional)</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 placeholder="e.g. +1 (555) 123-4567"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
             <div>
-              <label htmlFor="industry" className="block mb-1 text-gray-700 font-medium">
+              <label htmlFor="industry" className="font-body block mb-1 text-gray-700 font-medium">
                 Your Industry
               </label>
               <input
@@ -114,22 +114,22 @@ export default function ContactForm() {
                 name="industry"
                 placeholder="e.g. Technology"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
             </div>
           </div>
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block mb-1 text-gray-700 font-medium">
-              Additional Notes <span className="italic text-gray-500">(Optional)</span>
+            <label htmlFor="message" className="font-body block mb-1 text-gray-700 font-medium">
+              Additional Notes <span className="font-body italic text-gray-500">(Optional)</span>
             </label>
             <textarea
               id="message"
               name="message"
               placeholder="e.g. I’d like to learn more about your services..."
-              rows={5}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y overflow-y-auto"
+              rows={3}
+              className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y overflow-y-auto"
               style={{ maxHeight: "calc(100vh - 200px)" }} // 👈 keeps bottom padding
             />
           </div>
@@ -139,13 +139,13 @@ export default function ContactForm() {
             <button
               type="button"
               onClick={onClear}
-              className="flex-1 bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg hover:bg-gray-400 transition"
+              className="font-body flex-1 bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg hover:bg-gray-400 transition"
             >
               Clear
             </button>
             <button
               type="submit"
-              className="flex-1 bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
+              className="font-body flex-1 bg-[#3776a6] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
             >
               Submit Form
             </button>

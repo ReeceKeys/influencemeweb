@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
-export default function TierCardHome({ title, hovertitle, price, description, image, link, index }) {
+export default function TierCardHome({
+  title,
+  hovertitle,
+  price,
+  description,
+  image,
+  link,
+  index,
+  fontHeader = 'font-header',
+  fontBody = 'font-body'
+}) {
   const ref = useRef();
   const [inView, setInView] = useState(false);
 
@@ -15,9 +25,6 @@ export default function TierCardHome({ title, hovertitle, price, description, im
     return () => { if (element) observer.unobserve(element); };
   }, []);
 
-  const isEven = index % 2 === 0;
-
-  // Split description into lines
   const descriptionLines = description.split('\n');
 
   return (
@@ -27,48 +34,44 @@ export default function TierCardHome({ title, hovertitle, price, description, im
         ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
       `}
     >
-      {/* Mobile = row (card + description), Desktop = horizontal cards side by side */}
-      <div
-        className={`flex flex-row md:flex-col sm:justify-start items-start gap-4`}
-      >
+      <div className="flex flex-row md:flex-col sm:justify-start items-start gap-4">
         {/* Image card */}
         <Link
           to={link}
-          className="relative group flex-none min-w-[120px] sm:min-w-[160px] md:min-w-[220px] lg:min-w-[250px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+          className="relative group flex-none w-[250px] sm:w-[250px] md:w-[250px] lg:w-[250px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
         >
-          <div
-            className="w-full h-[120px] sm:h-[160px] md:h-[200px] lg:h-[250px] bg-center bg-cover"
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
+          {/* Fixed width & height image container */}
+          <div className="w-full h-[250px] overflow-hidden rounded-t">
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
 
           {/* Desktop hover overlay */}
-<div className="hidden md:flex absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
-  {/* Title at top */}
-  <h3 className="text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full">
-    {hovertitle}
-  </h3>
+          <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-95 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
+            <h3 className={`text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full ${fontHeader}`}>
+              {hovertitle}
+            </h3>
 
-  {/* Description in the middle */}
-  <div className='border-t border-b border-white'>
-    <div className="mx-auto w-4/5 text-left py-2">
-      <p className="text-xs sm:text-sm md:text-base">
-        {descriptionLines.map((line, idx) => (
-          <span key={idx}>
-            {line}
-            <br />
-          </span>
-        ))}
-      </p>
-    </div>
-  </div>
+            <div className="border-t border-b border-white">
+              <div className={`mx-auto w-4/5 text-left py-2 ${fontBody}`}>
+                <p className="text-xs sm:text-sm md:text-base">
+                  {descriptionLines.map((line, idx) => (
+                    <span key={idx}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
 
-  {/* Price at the bottom */}
-  <h3 className="mt-auto mb-8 text-center text-sm sm:text-base md:text-lg font-bold">
-    Starting Price: {price}
-  </h3>
-</div>
-
-
+            <h3 className={`mt-auto mb-8 text-center text-sm sm:text-base md:text-lg font-bold ${fontHeader}`}>
+              Starting Price: {price}
+            </h3>
+          </div>
 
           {/* Tier name at bottom */}
           <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 text-center py-1 sm:py-2 text-xs sm:text-sm md:text-base font-semibold text-gray-800">
@@ -77,24 +80,22 @@ export default function TierCardHome({ title, hovertitle, price, description, im
         </Link>
 
         {/* Mobile description */}
-        <div className="md:hidden flex-1 p-2 text-white text-sm text-left mb-8">
-        <h3 className="text-sm sm:text-base md:text-lg font-bold mb-2 text-left w-full">
+        <div className={`md:hidden flex-1 p-2 text-white text-sm text-left mb-8 ${fontBody}`}>
+          <h3 className={`text-sm sm:text-base md:text-lg font-bold mb-2 text-left w-full ${fontHeader}`}>
             {hovertitle}
-        </h3>
+          </h3>
 
-        {/* Lines with extra length on right */}
-        <div className="border-t border-b border-white py-2 mb-2 -mr-4">
+          <div className="border-t border-b border-white py-2 mb-2 -mr-4">
             {descriptionLines.map((line, idx) => (
-            <span key={idx}>
+              <span key={idx}>
                 {line}
                 <br />
-            </span>
+              </span>
             ))}
-        </div>
+          </div>
 
-        <h3>Starting Price: {price}</h3>
+          <h3 className={fontHeader}>Starting Price: {price}</h3>
         </div>
-
       </div>
     </div>
   );
