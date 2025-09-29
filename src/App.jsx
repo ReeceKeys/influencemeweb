@@ -14,7 +14,7 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <Header />
         {/* flex-1 ensures main takes all remaining space */}
-        <main className="flex-1 flex flex-col">
+        <main className="flex flex-1 flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tier1" element={<Tier1 />} />
@@ -23,7 +23,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <Footer />
+        <Footer className="fixed bottom-0 w-full" />
       </div>
     </Router>
   );

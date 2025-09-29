@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <motion.footer
-      className="font-body bg-white p-4 text-center text-sm text-gray-600"
+      className="font-body bg-white p-4 text-center text-sm text-gray-600 h-12"
       initial={{ opacity: 0, y: 20 }}
       animate={loaded ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: 'easeOut' }}

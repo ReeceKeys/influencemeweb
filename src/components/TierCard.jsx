@@ -1,14 +1,12 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-export default function TierCard({ title, description, price, details, icon: Icon, nav }) {
-  const [expanded, setExpanded] = useState(false);
-  const navigate = useNavigate();
-  const isNav = !!nav; // check if nav exists
-
+export default function TierCard({ title, description, price, icon: Icon, onLearnMore }) {
   return (
-    <div className="bg-white text-gray-800 rounded-lg shadow-lg flex flex-col overflow-hidden w-full mb-8">
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
+      className="bg-white text-gray-800 rounded-lg shadow-lg flex flex-col overflow-hidden w-full mb-8 cursor-pointer"
+    >
       {/* Top label */}
       <div className="bg-gray-200 opacity-80 text-center py-1 sm:py-2 text-xs sm:text-sm md:text-base font-semibold text-black">
         {title}
@@ -24,52 +22,26 @@ export default function TierCard({ title, description, price, details, icon: Ico
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="mb-4"
           >
-            <Icon className={`h-10 w-10 ${isNav ? 'text-[#b8ad69]' : 'text-[#3776a6]'}`} />
+            <Icon className="h-10 w-10 text-[#3776a6]" />
           </motion.div>
         )}
 
+        {/* Description */}
         <p className="text-sm text-center pb-8">{description}</p>
 
+        {/* Learn More button */}
         <button
-          onClick={() => {
-            if (nav) {
-              navigate(nav); // go to page if nav exists
-            } else {
-              setExpanded(!expanded); // expand/collapse details
-            }
-          }}
-          className={`mt-4 py-2 px-4 rounded transition ${
-            isNav
-              ? 'bg-[#b8ad69] hover:bg-[#dbd088] text-white'
-              : 'bg-[#3776a6] hover:bg-[#6aa6d4] text-white'
-          }`}
+          onClick={onLearnMore}
+          className="mt-4 py-2 px-4 rounded bg-[#3776a6] hover:bg-[#6aa6d4] text-white transition"
         >
-          {expanded ? 'Close' : 'Learn More'}
+          Learn More
         </button>
       </div>
 
-      {/* Expanded details */}
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: '20vh' }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="p-4 border-t border-gray-300 text-gray-700 text-sm leading-relaxed"
-            >
-              {details}
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      {/* Price footer (optional, can be removed if only for big card) */}
+      <div className="bg-gray-100 text-center py-2 text-sm font-semibold text-gray-800">
+        {price}
+      </div>
+    </motion.div>
   );
 }

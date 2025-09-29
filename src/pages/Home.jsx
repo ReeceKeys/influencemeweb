@@ -38,7 +38,7 @@ export default function Home() {
     </div>
 
     {/* Horizontal flexbox for desktop */}
-    <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start pt-8 gap-[6rem] transition-all duration-700 transform
+    <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start pt-8 gap-[10rem] transition-all duration-700 transform
       ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
     >
       {tiers.map((tier, idx) => (

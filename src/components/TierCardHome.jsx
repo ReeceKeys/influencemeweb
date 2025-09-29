@@ -38,10 +38,10 @@ export default function TierCardHome({
         {/* Image card */}
         <Link
           to={link}
-          className="relative group flex-none w-[180px] sm:w-[200px] xs:w-[160px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+          className="relative group flex-none w-[180px] sm:w-[200px] md:w-[250px] xs:w-[160px] rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
         >
           {/* Fixed width & height image container */}
-          <div className="w-full h-[180px] sm:h-[200px] xs:h-[160px] overflow rounded-t">
+          <div className="w-full h-[180px] sm:h-[200px] md:h-[260px] xs:h-[160px] overflow rounded-t">
             <img
               src={image}
               alt={title}
@@ -68,7 +68,7 @@ export default function TierCardHome({
               </div>
             </div>
 
-            <h3 className={`mt-auto mb-8 text-center text-sm sm:text-base md:text-lg font-bold ${fontHeader}`}>
+            <h3 className={`mt-6 mb-8 text-center text-sm sm:text-base md:text-lg font-bold ${fontHeader}`}>
               Starting Price: {price}
             </h3>
           </div>
