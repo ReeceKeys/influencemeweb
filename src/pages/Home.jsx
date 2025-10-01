@@ -26,19 +26,22 @@ export default function Home() {
     <div className={`max-w-3xl mx-auto text-center px-4 pt-8 transition-all duration-700 transform
       ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
     >
-      <h1 className="font-header text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-4 pb-4 mt-8">
-        Ready to grow your dream?
+      <h1 className="font-header text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-4 pb-4 mt-8 text-white">
+        Ready to <span className="text-yellow-100">grow</span> your <span className="text-yellow-100">dream</span>?
       </h1>
 
-      <p className="font-body text-sm md:text-lg text-indigo-100 font-medium mb-16 text-center">
+
+      <p className="font-body text-sm md:text-lg text-white font-medium mb-16 text-center">
         Industry-specific assistance
         <span className="inline md:hidden"><br /></span>
+        <span className="hidden md:inline"> </span>
         to build your brand.
       </p>
+
     </div>
 
     {/* Horizontal flexbox for desktop */}
-    <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start pt-8 gap-[10rem] transition-all duration-700 transform
+    <div className={`flex flex-row flex-wrap md:justify-center sm:justify-start pt-8 pb-16 gap-[6rem] sm:gap-[10rem] transition-all duration-700 transform
       ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
     >
       {tiers.map((tier, idx) => (

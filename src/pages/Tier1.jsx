@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import TierCard from '../components/TierCard.jsx';
 import { UserGroupIcon, PencilIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import consultingImg from '../assets/images/consulting.jpg';
+import mediaImg from '../assets/images/mediaplan.jpg';
+import scheduleImg from '../assets/images/schedule.jpg';
 
 export default function Tier1() {
   const tierPlans = [
@@ -10,6 +13,7 @@ export default function Tier1() {
       price: '$9.99/mo',
       icon: UserGroupIcon,
       scrollRef: useRef(null),
+      image: consultingImg,
     },
     {
       title: 'Media Plan',
@@ -17,6 +21,7 @@ export default function Tier1() {
       price: '$19.99/mo',
       icon: PencilIcon,
       scrollRef: useRef(null),
+      image: mediaImg,
     },
     {
       title: 'Content Calendar',
@@ -24,6 +29,7 @@ export default function Tier1() {
       price: '$29.99/mo',
       icon: CalendarIcon,
       scrollRef: useRef(null),
+      image: scheduleImg,
     },
   ];
 
@@ -40,7 +46,14 @@ export default function Tier1() {
   }, []);
 
   const handleScrollTo = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (ref.current) {
+      const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
+      const offset = window.innerHeight / 2 - ref.current.offsetHeight / 2; // center align
+      window.scrollTo({
+        top: elementTop - offset,
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
@@ -50,12 +63,12 @@ export default function Tier1() {
         className={`max-w-3xl mx-auto text-center transition-all duration-700 transform
         ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
       >
-        <h1 className="font-header text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-6 pb-2 mt-14 md:mt-28">
-          Tier 1
+        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-6 pb-2 mt-14 md:mt-28">
+          What is Tier 1?
         </h1>
 
         <h2
-          className={`font-header text-xl text-yellow-100 md:text-3xl sm:mb-4 md:mb-8 pb-10 mt-8 md:mt-16 transition-opacity duration-700 ${
+          className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${
             showSubheading ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -65,8 +78,8 @@ export default function Tier1() {
 
       {/* Small Cards */}
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl justify-items-center transition-all duration-700 transform
-        ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} sm:pb-12`}
+        className={`hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl justify-items-center transition-all duration-700 transform
+        ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} sm:pb-12 mb-32`}
       >
         {tierPlans.map((plan) => (
           <div key={plan.title} className="font-body w-full max-w-xs self-start">
@@ -82,42 +95,37 @@ export default function Tier1() {
       </div>
 
       {/* Big Cards Section */}
-      <div className="w-full  mt-320 space-y-32 mb-32">
-        {/* Consulting Big Card */}
-        <div ref={tierPlans[0].scrollRef} className="h-[70vh] bg-white text-gray-800 rounded-2xl shadow-2xl p-12 flex flex-col md:flex-row items-center gap-8">
-          <img src="/images/consulting.jpg" alt="Consulting" className="w-full md:w-1/2 rounded-xl" />
-          <div className="flex-1">
-            <h3 className="text-4xl font-bold mb-4">{tierPlans[0].title}</h3>
-            <p className="text-gray-700 mb-4">
-              Discuss where you are right now, and where you would like to be. Tailored one-on-one consulting sessions.
-            </p>
-            <p className="text-2xl font-semibold text-[#3776a6]">{tierPlans[0].price}</p>
-          </div>
-        </div>
+      <div className="w-full mt-4 sm:mt-32 space-y-16 md:space-y-32 mb-32">
+        {tierPlans.map((plan, idx) => (
+          <div
+            key={plan.title}
+            ref={plan.scrollRef}
+            className={`bg-white text-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 flex flex-col md:flex-row ${
+              idx % 2 === 1 ? 'md:flex-row-reverse' : ''
+            } items-center gap-6 md:gap-8`}
+          >
+            {/* Image Container with fixed aspect ratio */}
+            <div className="w-full md:w-1/2 aspect-[4/3] rounded-xl overflow-hidden flex-shrink-0 mb-6 md:mb-0">
+              <img
+                src={plan.image}
+                alt={plan.title}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
 
-        {/* Media Plan Big Card */}
-        <div ref={tierPlans[1].scrollRef} className="h-[70vh] bg-white text-gray-800 rounded-2xl shadow-2xl p-12 flex flex-col md:flex-row-reverse items-center gap-8">
-          <img src="/images/media.jpg" alt="Media Plan" className="w-full md:w-1/2 rounded-xl" />
-          <div className="flex-1">
-            <h3 className="text-4xl font-bold mb-4">{tierPlans[1].title}</h3>
-            <p className="text-gray-700 mb-4">
-              The Starter Pack includes all basic tools plus additional media and content management features.
-            </p>
-            <p className="text-2xl font-semibold text-[#3776a6]">{tierPlans[1].price}</p>
+            {/* Text content */}
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">{plan.title}</h3>
+              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Vivamus scelerisque velit nec justo malesuada, nec tincidunt lorem venenatis. 
+                Nullam at massa nec felis bibendum dictum. Sed sit amet lectus id nibh commodo facilisis. 
+                Curabitur eu dolor id nulla feugiat aliquam. Suspendisse potenti.
+              </p>
+              <p className="text-lg md:text-2xl font-semibold text-black">{plan.price}</p>
+            </div>
           </div>
-        </div>
-
-        {/* Content Calendar Big Card */}
-        <div ref={tierPlans[2].scrollRef} className="h-[70vh] bg-white text-gray-800 rounded-2xl shadow-2xl p-12 flex flex-col md:flex-row items-center gap-8">
-          <img src="/images/calendar.jpg" alt="Content Calendar" className="w-full md:w-1/2 rounded-xl" />
-          <div className="flex-1">
-            <h3 className="text-4xl font-bold mb-4">{tierPlans[2].title}</h3>
-            <p className="text-gray-700 mb-4">
-              Pro Pack provides full access to advanced scheduling and organizational tools for professionals.
-            </p>
-            <p className="text-2xl font-semibold text-[#3776a6]">{tierPlans[2].price}</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

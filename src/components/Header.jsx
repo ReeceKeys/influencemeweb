@@ -1,33 +1,35 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../logo.svg'; // import as file
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Trigger animation once on page load
     const timeout = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(timeout);
   }, []);
 
-  // Mobile menu animation variants
   const menuVariants = {
     hidden: { height: 0, opacity: 0 },
     visible: { height: 'auto', opacity: 1, transition: { duration: 0.3 } },
   };
 
+  const navClass = ({ isActive }) =>
+    `transition-colors duration-150 no-underline ${
+      isActive ? 'text-yellow-300' : 'text-black'
+    } md:hover:text-yellow-300`;
+
   return (
     <>
-      {/* Mobile tap/visited/focus fixes */}
       <style>{`
         a, button {
           -webkit-tap-highlight-color: transparent;
         }
         a:focus, a:visited, a:active {
-          color: black !important;
           outline: none !important;
         }
         button:focus, button:active {
@@ -44,19 +46,20 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
           
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="font-header text-2xl font-bold text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline"
-          >
-            InfluenceMe
-          </Link>
+          <NavLink to="/" className="flex items-center">
+            <img
+              src={logo}
+              alt="InfluenceMe"
+              className="h-12 sm:h-14 md:h-16 w-auto transition duration-300 ease-in-out md:hover:brightness-75"
+            />
+          </NavLink> 
 
           {/* Desktop Nav */}
           <nav className="font-header hidden md:flex space-x-6">
-            <Link to="/tier1" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 1</Link>
-            <Link to="/tier2" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 2</Link>
-            <Link to="/tier3" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 3</Link>
-            <Link to="/contact" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Contact</Link>
+            <NavLink to="/tier1" className={navClass}>Tier 1</NavLink>
+            <NavLink to="/tier2" className={navClass}>Tier 2</NavLink>
+            <NavLink to="/tier3" className={navClass}>Tier 3</NavLink>
+            <NavLink to="/contact" className={navClass}>Contact</NavLink>
           </nav>
 
           {/* Mobile Hamburger */}
@@ -86,10 +89,10 @@ export default function Header() {
               variants={menuVariants}
             >
               <nav className="flex flex-col space-y-2 p-4">
-                <Link onClick={() => setIsOpen(false)} to="/tier1" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 1</Link>
-                <Link onClick={() => setIsOpen(false)} to="/tier2" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 2</Link>
-                <Link onClick={() => setIsOpen(false)} to="/tier3" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Tier 3</Link>
-                <Link onClick={() => setIsOpen(false)} to="/contact" className="text-black hover:text-blue-500 active:text-blue-500 transition-colors duration-150 no-underline">Contact</Link>
+                <NavLink onClick={() => setIsOpen(false)} to="/tier1" className={navClass}>Tier 1</NavLink>
+                <NavLink onClick={() => setIsOpen(false)} to="/tier2" className={navClass}>Tier 2</NavLink>
+                <NavLink onClick={() => setIsOpen(false)} to="/tier3" className={navClass}>Tier 3</NavLink>
+                <NavLink onClick={() => setIsOpen(false)} to="/contact" className={navClass}>Contact</NavLink>
               </nav>
             </motion.div>
           )}

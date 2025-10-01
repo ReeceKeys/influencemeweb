@@ -145,7 +145,7 @@ export default function ContactForm() {
             </button>
             <button
               type="submit"
-              className="font-body flex-1 bg-[#3776a6] text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
+              className="font-body flex-1 bg-yellow-100 text-black font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
             >
               Submit Form
             </button>

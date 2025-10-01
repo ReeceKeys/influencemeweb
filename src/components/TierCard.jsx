@@ -20,9 +20,9 @@ export default function TierCard({ title, description, price, icon: Icon, onLear
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="mb-4"
+            className="mb-4 p-4 bg-gray-600 rounded-full"
           >
-            <Icon className="h-10 w-10 text-[#3776a6]" />
+            <Icon className="h-10 w-10 text-yellow-100" />
           </motion.div>
         )}
 
@@ -32,7 +32,7 @@ export default function TierCard({ title, description, price, icon: Icon, onLear
         {/* Learn More button */}
         <button
           onClick={onLearnMore}
-          className="mt-4 py-2 px-4 rounded bg-[#3776a6] hover:bg-[#6aa6d4] text-white transition"
+          className="mt-4 py-2 px-4 rounded bg-yellow-100 hover:bg-[#6aa6d4] text-black transition"
         >
           Learn More
         </button>
