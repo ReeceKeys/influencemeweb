@@ -19,9 +19,11 @@ export default function Header() {
   };
 
   const navClass = ({ isActive }) =>
-    `transition-colors duration-150 no-underline ${
-      isActive ? 'text-yellow-300' : 'text-black'
-    } md:hover:text-yellow-300`;
+  `transition-colors duration-150 md:hover:underline ${isActive ? 'underline decoration-black underline-offset-4' : 'text-black'}`;
+
+
+
+
 
   return (
     <>

@@ -6,6 +6,8 @@ import Tier1 from './pages/Tier1.jsx';
 import Tier2 from './pages/Tier2.jsx';
 import Tier3 from './pages/Tier3.jsx';
 import Contact from './pages/Contact.jsx';
+import './index.css';
+
 
 export default function App() {
   return (

@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
+import Slider from 'react-slick';
 import TierCard from '../components/TierCard.jsx';
 import { UserGroupIcon, PencilIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import consultingImg from '../assets/images/consulting.jpg';
 import mediaImg from '../assets/images/mediaplan.jpg';
 import scheduleImg from '../assets/images/schedule.jpg';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Tier1() {
   const tierPlans = [
@@ -56,8 +59,19 @@ export default function Tier1() {
     }
   };
 
+  // Mobile carousel settings
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   return (
-    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white px-4 sm:px-8 md:px-12 overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white sm:px-8 md:px-12 overflow-x-hidden">
+
       {/* Title */}
       <div
         className={`max-w-3xl mx-auto text-center transition-all duration-700 transform
@@ -76,7 +90,36 @@ export default function Tier1() {
         </h2>
       </div>
 
-      {/* Small Cards */}
+      {/* Mobile Carousel (big cards only) */}
+      <div className="md:hidden w-full max-w-md mb-12">
+        <Slider {...sliderSettings}>
+          {tierPlans.map((plan, idx) => (
+            <div key={plan.title} className="px-4 pb-8">
+              <div
+                className={`bg-white text-gray-800 rounded-2xl shadow-1xl p-6 flex flex-col items-center gap-6`}
+              >
+                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6">
+                  <img
+                    src={plan.image}
+                    alt={plan.title}
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold mb-3">{plan.title}</h3>
+                  <p className="text-gray-700 text-sm mb-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vivamus scelerisque velit nec justo malesuada, nec tincidunt lorem venenatis.
+                  </p>
+                  <p className="text-lg font-semibold text-black">{plan.price}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Small Cards (desktop only) */}
       <div
         className={`hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl justify-items-center transition-all duration-700 transform
         ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} sm:pb-12 mb-32`}
@@ -94,8 +137,8 @@ export default function Tier1() {
         ))}
       </div>
 
-      {/* Big Cards Section */}
-      <div className="w-full mt-4 sm:mt-32 space-y-16 md:space-y-32 mb-32">
+      {/* Big Cards Section (desktop only) */}
+      <div className="hidden md:flex w-full mt-4 sm:mt-32 space-y-32 flex-col mb-32">
         {tierPlans.map((plan, idx) => (
           <div
             key={plan.title}
@@ -104,7 +147,7 @@ export default function Tier1() {
               idx % 2 === 1 ? 'md:flex-row-reverse' : ''
             } items-center gap-6 md:gap-8`}
           >
-            {/* Image Container with fixed aspect ratio */}
+            {/* Image Container */}
             <div className="w-full md:w-1/2 aspect-[4/3] rounded-xl overflow-hidden flex-shrink-0 mb-6 md:mb-0">
               <img
                 src={plan.image}
