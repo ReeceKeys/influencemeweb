@@ -2,10 +2,8 @@ import { motion } from 'framer-motion';
 
 export default function TierCard({ title, description, price, icon: Icon, onLearnMore }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className="bg-white text-gray-800 rounded-lg shadow-lg flex flex-col overflow-hidden w-full mb-8 cursor-pointer"
+    <div
+      className="bg-white text-gray-800 rounded-lg shadow-lg flex flex-col overflow-hidden w-full mb-8"
     >
       {/* Top label */}
       <div className="bg-gray-200 opacity-80 text-center py-1 sm:py-2 text-xs sm:text-sm md:text-base font-semibold text-black">
@@ -32,16 +30,12 @@ export default function TierCard({ title, description, price, icon: Icon, onLear
         {/* Learn More button */}
         <button
           onClick={onLearnMore}
-          className="mt-4 py-2 px-4 rounded bg-yellow-100 hover:bg-[#6aa6d4] text-black transition"
+          className="mt-4 py-2 px-4 rounded bg-yellow-100 md:hover:bg-yellow-200 text-black transition"
         >
           Learn More
         </button>
       </div>
 
-      {/* Price footer (optional, can be removed if only for big card) */}
-      <div className="bg-gray-100 text-center py-2 text-sm font-semibold text-gray-800">
-        {price}
-      </div>
-    </motion.div>
+    </div>
   );
 }

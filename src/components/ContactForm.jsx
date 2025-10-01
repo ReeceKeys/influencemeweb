@@ -1,3 +1,4 @@
+// src/components/ContactForm.jsx
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,137 +43,122 @@ export default function ContactForm() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, translateY: 20 }}
-      animate={{ opacity: 1, translateY: 0 }}
-      transition={{ duration: 0.7 }}
-      className="bg-white text-gray-800 rounded-lg shadow-lg w-full max-w-lg overflow-hidden"
-    >
+    <AnimatePresence>
       <motion.div
-        layout
-        transition={{
-          layout: { type: "spring", damping: 22, stiffness: 180 },
-        }}
-        className="p-6 flex flex-col gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white text-gray-800 rounded-lg shadow-lg w-full max-w-lg overflow-hidden"
       >
-        <form
-          ref={formRef}
-          onSubmit={onSubmit}
-          className="flex flex-col gap-4"
-        >
-          {/* Name + Email */}
-          <div className="font-body grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-6 flex flex-col gap-4">
+          <form ref={formRef} onSubmit={onSubmit} className="flex flex-col gap-4">
+
+            {/* Name + Email */}
+            <div className="font-body grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="font-body block mb-1 text-gray-700 font-medium">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="e.g. John Doe"
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-100"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="font-body block mb-1 text-gray-700 font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g. john@example.com"
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-100"
+                />
+              </div>
+            </div>
+
+            {/* Phone + Industry */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="phone" className="font-body block mb-1 text-gray-700 font-medium">
+                  Phone <span className="italic text-gray-500">(Optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="e.g. +1 (555) 123-4567"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-100"
+                />
+              </div>
+              <div>
+                <label htmlFor="industry" className="font-body block mb-1 text-gray-700 font-medium">
+                  Your Industry
+                </label>
+                <input
+                  type="text"
+                  id="industry"
+                  name="industry"
+                  placeholder="e.g. Technology"
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-100"
+                />
+              </div>
+            </div>
+
+            {/* Message */}
             <div>
-              <label htmlFor="name" className="font-body block mb-1 text-gray-700 font-medium">
-                Name
+              <label htmlFor="message" className="block mb-1 text-gray-700 font-medium">
+                Additional Notes <span className="italic text-gray-500">(Optional)</span>
               </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="e.g. John Doe"
-                required
-                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              <textarea
+                id="message"
+                name="message"
+                placeholder="e.g. I’d like to learn more about your services..."
+                rows={3}
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-100 resize-y overflow-y-auto"
               />
             </div>
-            <div>
-              <label htmlFor="email" className="font-body block mb-1 text-gray-700 font-medium">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="e.g. john@example.com"
-                required
-                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
+
+            {/* Buttons */}
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={onClear}
+                className="flex-1 bg-white border text-gray-400 py-2 rounded-lg hover:bg-gray-200 hover:text-black transition"
+              >
+                Clear
+              </button>
+              <button
+                type="submit"
+                className="flex-1 bg-yellow-100 text-black text-gray-400 md:hover:text-black py-2 rounded-lg hover:bg-yellow-200 transition"
+              >
+                Submit Form
+              </button>
             </div>
-          </div>
+          </form>
 
-          {/* Phone + Industry */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="phone" className="font-body block mb-1 text-gray-700 font-medium">
-                Phone <span className="font-body italic text-gray-500">(Optional)</span>
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="e.g. +1 (555) 123-4567"
-                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-            <div>
-              <label htmlFor="industry" className="font-body block mb-1 text-gray-700 font-medium">
-                Your Industry
-              </label>
-              <input
-                type="text"
-                id="industry"
-                name="industry"
-                placeholder="e.g. Technology"
-                required
-                className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="font-body block mb-1 text-gray-700 font-medium">
-              Additional Notes <span className="font-body italic text-gray-500">(Optional)</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="e.g. I’d like to learn more about your services..."
-              rows={3}
-              className="font-body w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y overflow-y-auto"
-              style={{ maxHeight: "calc(100vh - 200px)" }} // 👈 keeps bottom padding
-            />
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={onClear}
-              className="font-body flex-1 bg-gray-300 text-gray-800 font-semibold py-2 rounded-lg hover:bg-gray-400 transition"
-            >
-              Clear
-            </button>
-            <button
-              type="submit"
-              className="font-body flex-1 bg-yellow-100 text-black font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
-            >
-              Submit Form
-            </button>
-          </div>
-        </form>
-
-        {/* Animated success/error message */}
-        <AnimatePresence>
+          {/* Animated success/error message */}
           {result && (
             <motion.div
-              key="result-message"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{
-                height: { duration: 0.5, ease: "easeInOut" },
-                opacity: { duration: 0.3, ease: "easeInOut" },
-              }}
-              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden mt-2"
             >
-              <p className="text-center text-gray-800 font-medium mt-2">
-                {result}
-              </p>
+              <p className="text-center text-gray-800 font-medium">{result}</p>
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
       </motion.div>
-    </motion.div>
+    </AnimatePresence>
   );
 }

@@ -6,7 +6,7 @@
 
 /* Slick carousel dots customization */
 .slick-dots {
-  bottom: 5rem; /* move dots up/down */
+  bottom: 3rem; /* move dots up/down */
 }
 
 .slick-dots li {

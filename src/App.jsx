@@ -6,12 +6,14 @@ import Tier1 from './pages/Tier1.jsx';
 import Tier2 from './pages/Tier2.jsx';
 import Tier3 from './pages/Tier3.jsx';
 import Contact from './pages/Contact.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 import './index.css';
 
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       {/* min-h-screen ensures full viewport */}
       <div className="flex flex-col min-h-screen">
         <Header />

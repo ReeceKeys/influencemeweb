@@ -5,6 +5,7 @@ import { UserGroupIcon, PencilIcon, CalendarIcon } from '@heroicons/react/24/out
 import consultingImg from '../assets/images/consulting.jpg';
 import mediaImg from '../assets/images/mediaplan.jpg';
 import scheduleImg from '../assets/images/schedule.jpg';
+import tierDescriptions from '../data/longDescriptions.js';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -13,6 +14,7 @@ export default function Tier1() {
     {
       title: 'Consulting',
       description: 'What do you hope to gain?',
+      descriptionLong: tierDescriptions.tier1.consulting,
       price: '$9.99/mo',
       icon: UserGroupIcon,
       scrollRef: useRef(null),
@@ -21,6 +23,7 @@ export default function Tier1() {
     {
       title: 'Media Plan',
       description: 'Organize your ideas into a plan.',
+      descriptionLong: tierDescriptions.tier1.mediaPlan,
       price: '$19.99/mo',
       icon: PencilIcon,
       scrollRef: useRef(null),
@@ -29,6 +32,7 @@ export default function Tier1() {
     {
       title: 'Content Calendar',
       description: 'Organize your content releases.',
+      descriptionLong: tierDescriptions.tier1.contentCalendar,
       price: '$29.99/mo',
       icon: CalendarIcon,
       scrollRef: useRef(null),
@@ -73,30 +77,19 @@ export default function Tier1() {
     <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white sm:px-8 md:px-12 overflow-x-hidden">
 
       {/* Title */}
-      <div
-        className={`max-w-3xl mx-auto text-center transition-all duration-700 transform
-        ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}
-      >
-        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-6 pb-2 mt-14 md:mt-28">
-          What is Tier 1?
-        </h1>
-
-        <h2
-          className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${
-            showSubheading ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          Planning
-        </h2>
+      <div className={`max-w-3xl mx-auto text-center transition-all duration-700 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
+        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-2 sm:mb-6 md:mb-6 pb-2 mt-14 md:mt-28">What's in Tier 1?</h1>
+        <h2>Starting at $500/month</h2>
+        <h2 className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>Planning</h2>
       </div>
 
       {/* Mobile Carousel (big cards only) */}
-      <div className="md:hidden w-full max-w-md mb-12">
+      <div className="md:hidden w-full">
         <Slider {...sliderSettings}>
           {tierPlans.map((plan, idx) => (
-            <div key={plan.title} className="px-4 pb-8">
+            <div key={plan.title} className="px-4 pb-32">
               <div
-                className={`bg-white text-gray-800 rounded-2xl shadow-1xl p-6 flex flex-col items-center gap-6`}
+                className={`bg-white text-gray-800 rounded-2xl shadow-1xl p-6 flex flex-col items-center gap-6 min-h-[550px]`}
               >
                 <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6">
                   <img
@@ -108,10 +101,8 @@ export default function Tier1() {
                 <div className="text-center">
                   <h3 className="text-2xl font-bold mb-3">{plan.title}</h3>
                   <p className="text-gray-700 text-sm mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vivamus scelerisque velit nec justo malesuada, nec tincidunt lorem venenatis.
+                    {plan.descriptionLong}
                   </p>
-                  <p className="text-lg font-semibold text-black">{plan.price}</p>
                 </div>
               </div>
             </div>
@@ -157,15 +148,11 @@ export default function Tier1() {
             </div>
 
             {/* Text content */}
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 px-24 text-center md:text-left">
               <h3 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">{plan.title}</h3>
               <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Vivamus scelerisque velit nec justo malesuada, nec tincidunt lorem venenatis. 
-                Nullam at massa nec felis bibendum dictum. Sed sit amet lectus id nibh commodo facilisis. 
-                Curabitur eu dolor id nulla feugiat aliquam. Suspendisse potenti.
+                {plan.descriptionLong}
               </p>
-              <p className="text-lg md:text-2xl font-semibold text-black">{plan.price}</p>
             </div>
           </div>
         ))}

@@ -1,31 +1,104 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ContactForm from "../components/ContactForm.jsx";
+import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+import { FaLinkedinIn } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Contact() {
   const [loaded, setLoaded] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const formWrapperRef = useRef(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoaded(true), 50);
     return () => clearTimeout(timeout);
   }, []);
 
-  return (
-    <div className="flex-1 flex-col bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white">
+  const toggleForm = () => {
+    if (formOpen) {
+      // Scroll user to top before closing
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
+      // Wait a short moment for scroll to start, then trigger closing animation
+      setClosing(true);
+    } else {
+      setFormOpen(true);
+    }
+  };
+
+  // Effect to finalize closing after scroll starts
+  useEffect(() => {
+    if (closing) {
+      const timeout = setTimeout(() => {
+        setFormOpen(false);
+        setClosing(false);
+      }, 500); // 500 delay to let scroll start
+      return () => clearTimeout(timeout);
+    }
+  }, [closing]);
+
+  return (
+    <div className="flex-1 flex flex-col bg-gradient-to-r from-[#444] via-[#555] via-[#666] to-[#333] text-white">
       {/* Header */}
       <header
-        className={`text-center py-12 mt-8 pb-12 transition-all duration-700 transform ${
-          loaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+        className={`text-center pt-32 transition-opacity duration-700 ${
+          loaded ? "opacity-100" : "opacity-0"
         }`}
       >
         <h1 className="text-3xl md:text-4xl font-extrabold">Contact Us</h1>
       </header>
 
-      {/* Main content */}
-      <main className="flex-1 flex items-center justify-center px-4 sm:px-8 md:px-12 mb-16">
-        <ContactForm />
-      </main>
+      {/* Contact Bubbles */}
+      <div className="flex justify-center gap-8 mt-8 mb-8 flex-wrap">
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 flex items-center justify-center rounded-lg text-gray-400 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black transition-colors cursor-pointer duration-500">
+            <a href="tel:+18312953842"><PhoneIcon className="w-8 h-8" /></a>
+          </div>
+          <span className="mt-2 text-white font-semibold">Phone</span>
+        </div>
 
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 flex items-center justify-center rounded-full text-gray-400 bg-green-100 md:hover:bg-green-200 md:hover:text-black transition-colors cursor-pointer duration-500">
+            <a href="mailto:influencemeinc@gmail.com"><EnvelopeIcon className="w-8 h-8" /></a>
+          </div>
+          <span className="mt-2 text-white font-semibold">Email</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-gray-400 md:hover:bg-blue-200 md:hover:text-black transition-colors duration-500 cursor-pointer">
+            <a href="https://www.linkedin.com/feed/" target="_blank"><FaLinkedinIn className="w-6 h-6" /></a>
+          </div>
+          <span className="mt-2 text-white font-semibold">LinkedIn</span>
+        </div>
+      </div>
+
+      {/* Toggle Form Button */}
+      <div className="text-center">
+        <button
+          onClick={toggleForm}
+          className="px-6 p-3 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black text-gray-400 rounded-lg transition-colors duration-500"
+        >
+          {formOpen ? "Close Form" : "Send a Form"}
+        </button>
+      </div>
+
+      {/* Form Container */}
+      <div ref={formWrapperRef} className="mt-32 mb-32 flex justify-center w-full">
+        <AnimatePresence>
+          {(formOpen || closing) && (
+            <motion.div
+              key="contact-form"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
+              <ContactForm />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

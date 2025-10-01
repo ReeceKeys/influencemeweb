@@ -19,7 +19,7 @@ export default function Header() {
   };
 
   const navClass = ({ isActive }) =>
-  `transition-colors duration-150 md:hover:underline ${isActive ? 'underline decoration-black underline-offset-4' : 'text-black'}`;
+  `transition-colors duration-150 ${isActive ? 'underline decoration-black underline-offset-4' : 'text-black'}`;
 
 
 

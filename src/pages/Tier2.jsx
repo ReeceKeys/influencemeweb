@@ -5,14 +5,15 @@ import { MinusIcon, WrenchScrewdriverIcon, CalendarDaysIcon } from '@heroicons/r
 import tier1Img from '../assets/images/new-tier1.jpg';
 import contentImg from '../assets/images/videoedit.jpg';
 import scheduleImg from '../assets/images/calendar.jpg';
+import tierDescriptions from '../data/longDescriptions.js';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Tier2() {
   const tierPlans = [
-    { title: 'Tier 1', description: 'Everything in the Tier 1 Plan.', price: '$9.99/mo', icon: MinusIcon, scrollRef: useRef(null), image: tier1Img },
-    { title: 'Content Editing', description: 'User-specific content editing.', price: '$19.99/mo', icon: WrenchScrewdriverIcon, scrollRef: useRef(null), image: contentImg },
-    { title: 'Advanced Scheduling', description: 'Content details, release dates, etc.', price: '$29.99/mo', icon: CalendarDaysIcon, scrollRef: useRef(null), image: scheduleImg },
+    { title: 'Tier 1', description: 'Everything in the Tier 1 Plan.', longDescription: tierDescriptions.tier2.tier1Addon, price: '$9.99/mo', icon: MinusIcon, scrollRef: useRef(null), image: tier1Img },
+    { title: 'Content Editing', description: 'User-specific content editing.', longDescription: tierDescriptions.tier2.contentEditing, price: '$19.99/mo', icon: WrenchScrewdriverIcon, scrollRef: useRef(null), image: contentImg },
+    { title: 'Advanced Scheduling', description: 'Content details, release dates, etc.', longDescription: tierDescriptions.tier2.advancedScheduling, price: '$29.99/mo', icon: CalendarDaysIcon, scrollRef: useRef(null), image: scheduleImg },
   ];
 
   const [loaded, setLoaded] = useState(false);
@@ -39,23 +40,23 @@ export default function Tier2() {
 
       {/* Title */}
       <div className={`max-w-3xl mx-auto text-center transition-all duration-700 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
-        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-6 pb-2 mt-14 md:mt-28">What is Tier 2?</h1>
-        <h2 className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>Tools & Editing</h2>
+        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-2 sm:mb-6 md:mb-6 pb-2 mt-14 md:mt-28">What's in Tier 2?</h1>
+        <h2>Starting at $1000/month</h2>
+        <h2 className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>Editing</h2>
       </div>
 
       {/* Mobile Carousel */}
-      <div className="md:hidden w-full -mx-4 mb-12"> {/* flush edges */}
+      <div className="md:hidden w-full"> {/* flush edges */}
         <Slider {...sliderSettings}>
           {tierPlans.map((plan) => (
-            <div key={plan.title} className="px-4 pb-8">
-              <div className="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 flex flex-col items-center gap-6">
+            <div key={plan.title} className="px-4 pb-32">
+              <div className="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 flex flex-col items-center gap-6 min-h-[550px]">
                 <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6">
                   <img src={plan.image} alt={plan.title} className="w-full h-full object-cover object-center" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold mb-3">{plan.title}</h3>
-                  <p className="text-gray-700 text-sm mb-3">{plan.description}</p>
-                  <p className="text-lg font-semibold text-black">{plan.price}</p>
+                  <p className="text-gray-700 text-sm mb-3">{plan.longDescription}</p>
                 </div>
               </div>
             </div>
@@ -79,10 +80,9 @@ export default function Tier2() {
             <div className="w-full md:w-1/2 aspect-[4/3] rounded-xl overflow-hidden flex-shrink-0 mb-6 md:mb-0">
               <img src={plan.image} alt={plan.title} className="w-full h-full object-cover object-center" />
             </div>
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 px-24 text-center md:text-left">
               <h3 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">{plan.title}</h3>
-              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{plan.description}</p>
-              <p className="text-lg md:text-2xl font-semibold text-black">{plan.price}</p>
+              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{plan.longDescription}</p>
             </div>
           </div>
         ))}

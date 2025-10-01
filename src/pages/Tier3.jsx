@@ -5,14 +5,15 @@ import { MinusIcon, Bars2Icon, CameraIcon } from '@heroicons/react/24/outline';
 import tier1Img from '../assets/images/new-tier1.jpg';
 import tier2Img from '../assets/images/new-tier2.jpg';
 import productionImg from '../assets/images/production.jpg';
+import tierDescriptions from '../data/longDescriptions.js';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Tier3() {
   const tierPlans = [
-    { title: 'Tier 1', description: 'Everything in the Tier 1 Plan.', price: '$9.99/mo', icon: MinusIcon, scrollRef: useRef(null), image: tier1Img },
-    { title: 'Tier 2', description: 'Everything in the Tier 2 Plan.', price: '$19.99/mo', icon: Bars2Icon, scrollRef: useRef(null), image: tier2Img },
-    { title: 'Full Production', description: 'Everything from idea to release.', price: '$29.99/mo', icon: CameraIcon, scrollRef: useRef(null), image: productionImg },
+    { title: 'Tier 1', description: 'Everything in the Tier 1 Plan.', longDescription: tierDescriptions.tier3.tier1Addon,price: '$9.99/mo', icon: MinusIcon, scrollRef: useRef(null), image: tier1Img },
+    { title: 'Tier 2', description: 'Everything in the Tier 2 Plan.', longDescription: tierDescriptions.tier3.tier2Addon, price: '$19.99/mo', icon: Bars2Icon, scrollRef: useRef(null), image: tier2Img },
+    { title: 'Full Production', description: 'Everything from idea to release.', longDescription: tierDescriptions.tier3.fullProduction, price: '$29.99/mo', icon: CameraIcon, scrollRef: useRef(null), image: productionImg },
   ];
 
   const [loaded, setLoaded] = useState(false);
@@ -39,23 +40,23 @@ export default function Tier3() {
 
       {/* Title */}
       <div className={`max-w-3xl mx-auto text-center transition-all duration-700 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
-        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight sm:mb-4 md:mb-6 pb-2 mt-14 md:mt-28">What is Tier 3?</h1>
+        <h1 className="font-header text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-2 sm:mb-6 md:mb-6 pb-2 mt-14 md:mt-28">What's in Tier 3?</h1>
+        <h2>Starting at $1500/month</h2>
         <h2 className={`font-extrabold font-header text-xl text-yellow-100 md:text-3xl mb-2 sm:mb-4 md:mb-8 pb-10 mt-4 md:mt-8 transition-opacity duration-700 ${showSubheading ? 'opacity-100' : 'opacity-0'}`}>Production</h2>
       </div>
 
       {/* Mobile Carousel */}
-      <div className="md:hidden w-full -mx-4 mb-12">
+      <div className="md:hidden w-full">
         <Slider {...sliderSettings}>
           {tierPlans.map((plan) => (
-            <div key={plan.title} className="px-4 pb-8">
-              <div className="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 flex flex-col items-center gap-6">
+            <div key={plan.title} className="px-4 pb-32">
+              <div className="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 flex flex-col items-center gap-6 min-h-[550px]">
                 <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6">
                   <img src={plan.image} alt={plan.title} className="w-full h-full object-cover object-center" />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold mb-3">{plan.title}</h3>
-                  <p className="text-gray-700 text-sm mb-3">{plan.description}</p>
-                  <p className="text-lg font-semibold text-black">{plan.price}</p>
+                  <p className="text-gray-700 text-sm mb-3">{plan.longDescription}</p>
                 </div>
               </div>
             </div>
@@ -79,10 +80,9 @@ export default function Tier3() {
             <div className="w-full md:w-1/2 aspect-[4/3] rounded-xl overflow-hidden flex-shrink-0 mb-6 md:mb-0">
               <img src={plan.image} alt={plan.title} className="w-full h-full object-cover object-center" />
             </div>
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 px-24 text-center md:text-left">
               <h3 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">{plan.title}</h3>
-              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{plan.description}</p>
-              <p className="text-lg md:text-2xl font-semibold text-black">{plan.price}</p>
+              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">{plan.longDescription}</p>
             </div>
           </div>
         ))}

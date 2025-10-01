@@ -56,7 +56,7 @@ export default function Home() {
         <div className="flex justify-center mb-12">
           <button
             onClick={() => scrollToRef(reviewsRef)}
-            className="bg-yellow-100 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-200 transition-colors duration-200"
+            className="bg-yellow-100 md:hover:bg-yellow-200 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg transition-colors duration-300"
           >
             Go to Testimonials
           </button>
@@ -84,7 +84,7 @@ export default function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div ref={reviewsRef} className={`max-w-5xl mx-auto text-center pt-12 pb-16 transition-all duration-700 transform
+      <div ref={reviewsRef} className={`max-w-5xl mx-auto text-center pt-12 pb-6 md:pb-16 transition-all duration-700 transform
         ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       >
         <h2 className="font-header text-3xl md:text-4xl font-bold text-yellow-100 mb-6">
@@ -111,10 +111,10 @@ export default function Home() {
         </div>
 
         {/* Go Back to Top Button */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-16 md:mt-20">
           <button
             onClick={() => scrollToRef(topRef)}
-            className="bg-yellow-100 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-200 transition-colors duration-200"
+            className="bg-yellow-100 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg md:hover:bg-yellow-200 transition-colors duration-200"
           >
             Go Back to Top
           </button>
