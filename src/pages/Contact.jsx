@@ -21,7 +21,7 @@ export default function Contact() {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       // Wait a short moment for scroll to start, then trigger closing animation
-      setClosing(true);
+      setTimeout(() => setClosing(true), 400);
     } else {
       setFormOpen(true);
     }
@@ -50,23 +50,23 @@ export default function Contact() {
       </header>
 
       {/* Contact Bubbles */}
-      <div className="flex justify-center gap-8 mt-8 mb-8 flex-wrap">
+      <div className="flex justify-center gap-8 mt-32 mb-8 flex-wrap">
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center rounded-lg text-gray-400 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black transition-colors cursor-pointer duration-500">
+          <div className="w-16 h-16 flex items-center justify-center rounded-lg text-gray-900 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black transition-colors cursor-pointer duration-500">
             <a href="tel:+18312953842"><PhoneIcon className="w-8 h-8" /></a>
           </div>
           <span className="mt-2 text-white font-semibold">Phone</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center rounded-full text-gray-400 bg-green-100 md:hover:bg-green-200 md:hover:text-black transition-colors cursor-pointer duration-500">
+          <div className="w-16 h-16 flex items-center justify-center rounded-full text-gray-900 bg-green-100 md:hover:bg-green-200 md:hover:text-black transition-colors cursor-pointer duration-500">
             <a href="mailto:influencemeinc@gmail.com"><EnvelopeIcon className="w-8 h-8" /></a>
           </div>
           <span className="mt-2 text-white font-semibold">Email</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-gray-400 md:hover:bg-blue-200 md:hover:text-black transition-colors duration-500 cursor-pointer">
+          <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-gray-900 md:hover:bg-blue-200 md:hover:text-black transition-colors duration-500 cursor-pointer">
             <a href="https://www.linkedin.com/feed/" target="_blank"><FaLinkedinIn className="w-6 h-6" /></a>
           </div>
           <span className="mt-2 text-white font-semibold">LinkedIn</span>
@@ -77,9 +77,13 @@ export default function Contact() {
       <div className="text-center">
         <button
           onClick={toggleForm}
-          className="px-6 p-3 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black text-gray-400 rounded-lg transition-colors duration-500"
-        >
-          {formOpen ? "Close Form" : "Send a Form"}
+          disabled ={closing}
+          className={`px-6 p-3 rounded-lg transition-colors duration-500 
+                ${closing 
+                  ? "bg-gray-300 text-gray-600 cursor-not-allowed" 
+                  : "bg-yellow-100 text-gray-900 md:hover:bg-yellow-200 md:hover:text-black"
+                }`}        >
+          {closing ? "Closing..." : formOpen ? "Close Form" : "Send Form"}
         </button>
       </div>
 
@@ -92,7 +96,7 @@ export default function Contact() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
             >
               <ContactForm />
             </motion.div>

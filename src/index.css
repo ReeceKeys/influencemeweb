@@ -22,3 +22,14 @@
 .slick-dots li.slick-active button::before {
   color: #fefcbf !important;     /* yellow active dot */
 }
+
+html, body {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none;
+}

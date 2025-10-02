@@ -148,9 +148,9 @@ export default function Tier1() {
             </div>
 
             {/* Text content */}
-            <div className="flex-1 px-24 text-center md:text-left">
-              <h3 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">{plan.title}</h3>
-              <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4">
+            <div className="flex-1 md:px-12 lg:px-24 text-center md:text-left">
+              <h3 className="text-2xl md:text-4xl font-bold mb-6 md:mb-9">{plan.title}</h3>
+              <p className="text-gray-700 text-sm sm:text-lg lg:text-3xl mb-3 md:mb-4">
                 {plan.descriptionLong}
               </p>
             </div>

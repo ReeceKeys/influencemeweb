@@ -132,15 +132,15 @@ export default function ContactForm() {
               <button
                 type="button"
                 onClick={onClear}
-                className="flex-1 bg-white border text-gray-400 py-2 rounded-lg hover:bg-gray-200 hover:text-black transition"
+                className="flex-1 bg-white border text-gray-900 py-2 rounded-lg hover:bg-gray-200 hover:text-black transition duration-300"
               >
                 Clear
               </button>
               <button
                 type="submit"
-                className="flex-1 bg-yellow-100 text-black text-gray-400 md:hover:text-black py-2 rounded-lg hover:bg-yellow-200 transition"
+                className="flex-1 bg-yellow-100 text-black text-gray-900 md:hover:text-black py-2 rounded-lg hover:bg-yellow-200 transition duration-300"
               >
-                Submit Form
+                Submit
               </button>
             </div>
           </form>
