@@ -18,7 +18,7 @@ export default function TierCard({ title, description, price, icon: Icon, onLear
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="mb-8 p-4 bg-gray-600 rounded-full"
+            className="mb-8 p-4 bg-[#2f2f2f] rounded-full"
           >
             <Icon className="h-10 w-10 text-yellow-100" />
           </motion.div>

@@ -50,7 +50,7 @@ export default function TierCardHome({
           </div>
 
           {/* Desktop hover overlay */}
-          <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
+          <div className="hidden md:flex absolute inset-0 bg-black bg-opacity-90 opacity-0 group-hover:opacity-100 transition duration-300 p-4 flex-col text-white">
             <h3 className={`text-sm sm:text-base md:text-lg font-bold mb-6 text-center w-full ${fontHeader}`}>
               {hovertitle}
             </h3>
@@ -74,7 +74,7 @@ export default function TierCardHome({
           </div>
 
           {/* Tier name at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 text-center py-1 sm:py-2 text-xs sm:text-sm md:text-base font-semibold text-gray-800">
+          <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-100 text-center py-1 sm:py-2 text-xs sm:text-sm md:text-base font-semibold text-gray-800">
             {title}
           </div>
         </Link>

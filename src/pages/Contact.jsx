@@ -39,7 +39,7 @@ export default function Contact() {
   }, [closing]);
 
   return (
-    <div className="flex-1 flex flex-col bg-gradient-to-r from-[#444] via-[#555] via-[#666] to-[#333] text-white">
+    <div className="flex-1 flex flex-col bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#666] to-[#333] text-white">
       {/* Header */}
       <header
         className={`text-center pt-32 transition-opacity duration-700 ${
@@ -50,7 +50,7 @@ export default function Contact() {
       </header>
 
       {/* Contact Bubbles */}
-      <div className="flex justify-center gap-8 mt-32 mb-8 flex-wrap">
+      <div className="flex justify-center gap-8 mt-12 mb-8 flex-wrap">
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 flex items-center justify-center rounded-lg text-gray-900 bg-yellow-100 md:hover:bg-yellow-200 md:hover:text-black transition-colors cursor-pointer duration-500">
             <a href="tel:+18312953842"><PhoneIcon className="w-8 h-8" /></a>

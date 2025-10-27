@@ -36,7 +36,7 @@ export default function Tier2() {
   const sliderSettings = { dots: true, infinite: false, speed: 500, slidesToShow: 1, slidesToScroll: 1, arrows: false };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#444444ff] via-[#555555ff] via-[#666666ff] to-[#333333ff] text-white sm:px-8 md:px-12 overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#666666ff] to-[#333333ff] text-white sm:px-8 md:px-12 overflow-x-hidden">
 
       {/* Title */}
       <div className={`max-w-3xl mx-auto text-center transition-all duration-700 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>

@@ -1,4 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga4';
+
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
@@ -9,15 +12,25 @@ import Contact from './pages/Contact.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import './index.css';
 
+function usePageTracking() {
+  const location = useLocation();
 
-export default function App() {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: 'pageview',
+      page: location.pathname + location.search,
+    });
+  }, [location]);
+}
+
+function AppContent() {
+  usePageTracking();
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
-      {/* min-h-screen ensures full viewport */}
       <div className="flex flex-col min-h-screen">
         <Header />
-        {/* flex-1 ensures main takes all remaining space */}
         <main className="flex flex-1 flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -29,6 +42,14 @@ export default function App() {
         </main>
         <Footer className="fixed bottom-0 w-full" />
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
