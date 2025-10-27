@@ -7,9 +7,9 @@ import tier3Img from '../assets/images/new-tier3.jpg';
 
 export default function Home() {
   const tiers = [
-    { title: 'Tier 1', hovertitle: 'Strategy', description: '+ Consulting\n+ Planning\n+ Strategy', image: tier1Img, link: '/tier1', price: '$150' },
-    { title: 'Tier 2', hovertitle: 'Execution', description: '+ Tier 1\n+ Media Editing\n+ Scheduling Content', image: tier2Img, link: '/tier2', price: '$300' },
-    { title: 'Tier 3', hovertitle: 'Production', description: '+ Tier 2\n+ On-Site Production\n', image: tier3Img, link: '/tier3', price: '$500' },
+    { title: 'Tier 1', hovertitle: 'Strategy', description: '+ Consulting\n+ Planning\n+ Strategy', image: tier1Img, link: '/tier1', price: '$500' },
+    { title: 'Tier 2', hovertitle: 'Execution', description: '+ Tier 1\n+ Media Editing\n+ Scheduling Content', image: tier2Img, link: '/tier2', price: '$1000' },
+    { title: 'Tier 3', hovertitle: 'Production', description: '+ Tier 2\n+ On-Site Production\n', image: tier3Img, link: '/tier3', price: '$1500' },
   ];
 
   const [loaded, setLoaded] = useState(false);
