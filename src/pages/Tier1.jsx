@@ -74,7 +74,7 @@ export default function Tier1() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#666666ff] to-[#333333ff] text-white sm:px-8 md:px-12 overflow-x-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#2f2f2f] to-[#2f2f2f] text-white sm:px-8 md:px-12 overflow-x-hidden">
 
       {/* Title */}
       <div className={`max-w-3xl mx-auto text-center transition-all duration-700 transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>

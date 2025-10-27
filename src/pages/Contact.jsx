@@ -39,7 +39,7 @@ export default function Contact() {
   }, [closing]);
 
   return (
-    <div className="flex-1 flex flex-col bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#666] to-[#333] text-white">
+    <div className="flex-1 flex flex-col bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#2f2f2f] to-[#2f2f2f] text-white">
       {/* Header */}
       <header
         className={`text-center pt-32 transition-opacity duration-700 ${

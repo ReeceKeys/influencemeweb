@@ -35,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <div ref={topRef} className="flex-1 flex flex-col p-4 pb-12 sm:p-8 md:p-8 bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#666666ff] to-[#333333ff] text-white overflow-y-auto">
+    <div ref={topRef} className="flex-1 flex flex-col p-4 pb-12 sm:p-8 md:p-8 bg-gradient-to-r from-[#2f2f2f] via-[#2f2f2f] via-[#2f2f2f] to-[#2f2f2f] text-white overflow-y-auto">
 
       {/* Header and description */}
       <div className={`max-w-3xl mx-auto text-center px-4 pt-8 transition-all duration-700 transform
