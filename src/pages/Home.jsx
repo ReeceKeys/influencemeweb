@@ -56,7 +56,7 @@ export default function Home() {
         <div className="flex justify-center mb-12">
           <button
             onClick={() => scrollToRef(reviewsRef)}
-            className="bg-yellow-100 md:hover:bg-yellow-200 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg transition-colors duration-300"
+            className="font-header bg-yellow-100 md:hover:bg-yellow-200 text-gray-900 px-6 py-3 rounded-lg shadow-lg transition-colors duration-300"
           >
             Testimonials
           </button>
@@ -95,16 +95,16 @@ export default function Home() {
         </p>
 
         {/* Placeholder review cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="font-body grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           <div className="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
             <p className="mb-4">"Excellent strategy and execution! Highly recommend."</p>
             <p className="font-semibold">- Jane Doe, CEO</p>
           </div>
-          <div className="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+          <div className="font-body bg-white text-gray-800 rounded-xl p-6 shadow-lg">
             <p className="mb-4">"Professional and thorough approach. Outstanding results."</p>
             <p className="font-semibold">- John Smith, Marketing Director</p>
           </div>
-          <div className="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+          <div className="font-body bg-white text-gray-800 rounded-xl p-6 shadow-lg">
             <p className="mb-4">"The team helped our brand grow faster than expected."</p>
             <p className="font-semibold">- Alice Johnson, Entrepreneur</p>
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="flex justify-center mt-16 md:mt-20">
           <button
             onClick={() => scrollToRef(topRef)}
-            className="bg-yellow-100 text-gray-900 font-medium px-6 py-3 rounded-lg shadow-lg md:hover:bg-yellow-200 transition-colors duration-200"
+            className="bg-yellow-100 text-gray-900 font-header px-6 py-3 rounded-lg shadow-lg md:hover:bg-yellow-200 transition-colors duration-200"
           >
            Back to Top
           </button>

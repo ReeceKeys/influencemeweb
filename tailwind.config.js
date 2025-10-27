@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        header: ['Work Sans', 'sans-serif'], // For titles, headers
-        body: ['Lato', 'sans-serif'],    // For paragraphs, body text
+        header: ['Georgia Pro', 'sans-serif'], // For titles, headers
+        body: ['Georgia Pro', 'sans-serif'],    // For paragraphs, body text
       },
     },
   },
