@@ -29,7 +29,7 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-[#2f2f2f]">
         <Header />
         <main className="flex flex-1 flex-col">
           <Routes>
