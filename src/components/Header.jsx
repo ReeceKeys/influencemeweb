@@ -68,7 +68,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-500 active:text-blue-500 focus:outline-none transition-colors duration-150"
+              className="text-gray-700 hover:text-gray-700 active:text-gray-700 focus:outline-none"
             >
               <motion.div
                 animate={{ rotate: isOpen ? 90 : 0 }}

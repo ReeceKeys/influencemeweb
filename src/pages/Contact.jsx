@@ -46,7 +46,7 @@ export default function Contact() {
           loaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <h1 className="text-3xl md:text-4xl font-extrabold">Contact Us</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold">Let's Get Started!</h1>
       </header>
 
       {/* Contact Bubbles */}
